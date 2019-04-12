@@ -97,6 +97,31 @@ module.exports = declareInjections({
       }), { session: INTERNAL_PRIVILEGED });
     }
   }
+
+  async tmpMigrated(container, environment, Session) {
+    if (environment !== 'production' /* && ephemeralStorage */) {
+      let searchers = await container.lookup(`hub:searchers`);
+      let models = await (await container.lookup('config:initial-models'))();
+
+      try {
+        await this.validateModels(models, async (type, id) => {
+          let result;
+          try {
+            result = await searchers.getFromControllingBranch(Session.INTERNAL_PRIVILEGED, type, id);
+          } catch (err) {
+            if (err.status !== 404) { throw err; }
+          }
+
+          if (result && result.data) {
+            return result.data;
+          }
+        });
+      } catch (err) {
+        log.error(`Shutting down hub due to invalid model(s): ${err.message}`);
+        process.exit(1);
+      }
+    }
+  }
 });
 
 

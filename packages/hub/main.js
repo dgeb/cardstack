@@ -61,31 +61,8 @@ async function startIndexing(environment, container) {
   await container.lookup('hub:indexers').update({
     dontWaitForJob: environment === 'production'
   });
-
   let ephemeralStorage = await container.lookup(`plugin-services:${require.resolve('@cardstack/ephemeral/service')}`);
-  if (environment !== 'production' && ephemeralStorage) {
-    let searchers = await container.lookup(`hub:searchers`);
-    let models = await (await container.lookup('config:initial-models'))();
-
-    try {
-      await ephemeralStorage.validateModels(models, async (type, id) => {
-        let result;
-        try {
-          result = await searchers.get(Session.INTERNAL_PRIVILEGED, 'local-hub', type, id);
-        } catch (err) {
-          if (err.status !== 404) { throw err; }
-        }
-
-        if (result && result.data) {
-          return result.data;
-        }
-      });
-    } catch (err) {
-      log.error(`Shutting down hub due to invalid model(s): ${err.message}`);
-      process.exit(1);
-    }
-  }
-
+  await ephemeralStorage.tmpMigrated(container, environment, Session)
   setInterval(() => container.lookup('hub:indexers').update({ dontWaitForJob: true }), 600000);
 }
 
