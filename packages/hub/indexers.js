@@ -59,6 +59,8 @@ class Indexers extends EventEmitter {
     this._forceRefreshQueue = [];
     this._dataSourcesMemo = null;
     this._schemaCache = null;
+    this._readyPromise = null;
+    this._resolveReadyPromise = null;
   }
 
   async schemaForBranch(branch) {
@@ -85,6 +87,20 @@ class Indexers extends EventEmitter {
     this._schemaCache = null;
   }
 
+/**
+ * Some plugin features rely on the completion of the first indexing in
+ * order to work, such as validating models. `ready()` can be called by
+ * other API methods that need this waiting behavior.
+ */
+  ready() {
+    if (!this._readyPromise) {
+      this._readyPromise = new Promise(resolve => {
+        this._resolveReadyPromise = resolve;
+      });
+    }
+    return this._readyPromise;
+  }
+
   static async teardown(instance) {
     await instance.invalidateSchemaCache();
     if (instance._dataSourcesMemo) {
@@ -96,18 +112,20 @@ class Indexers extends EventEmitter {
     await this._setupWorkers();
     // Note that we dont want singletonKey, its inefficient due to the sophisticated invalidation we are using,
     // also we dont want to use singletoneNextSlot, since all the indexing calls are important (as they can have different hints, and we dont want to collapse jobs)
-
+    
     if (dontWaitForJob) {
       await this.jobQueue.publish('hub/indexers/update',
-        { forceRefresh, hints },
-        { singletonKey: 'hub/indexers/update', singletonNextSlot: true, expireIn: '2 hours' }
+      { forceRefresh, hints },
+      { singletonKey: 'hub/indexers/update', singletonNextSlot: true, expireIn: '2 hours' }
       );
     } else {
       await this.jobQueue.publishAndWait('hub/indexers/update',
-        { forceRefresh, hints },
-        { singletonKey: 'hub/indexers/update', singletonNextSlot: true, expireIn: '2 hours' }
+      { forceRefresh, hints },
+      { singletonKey: 'hub/indexers/update', singletonNextSlot: true, expireIn: '2 hours' }
       );
     }
+    this.ready();
+    return this._resolveReadyPromise();
   }
 
   async _setupWorkers() {
