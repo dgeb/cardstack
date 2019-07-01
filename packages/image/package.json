@@ -28,7 +28,7 @@
     "@cardstack/files": "0.14.21",
     "@cardstack/plugin-utils": "0.14.21",
     "@cardstack/test-support": "0.14.21",
-    "ember-cli-babel": "^6.8.2",
+    "ember-cli-babel": "^7.8.0",
     "ember-cli-htmlbars": "^2.0.1"
   },
   "devDependencies": {
