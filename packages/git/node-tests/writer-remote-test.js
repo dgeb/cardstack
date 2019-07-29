@@ -1,8 +1,9 @@
 const {
-  Cred,
-  Clone,
   Remote,
 } = require('nodegit');
+
+const Clone = require('../clone');
+const Cred = require('../cred');
 
 const {
   createDefaultEnvironment,

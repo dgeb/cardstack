@@ -1,8 +1,5 @@
-const {
-  Cred,
-  Clone
-} = require('nodegit');
-
+const Cred = require('./cred');
+const Clone = require('./clone');
 const Repository = require('./repository');
 
 const crypto = require('crypto');
