@@ -1,10 +1,7 @@
-const {
-  Reference
-} = require('nodegit');
-
 const Repository = require('../../repository');
 const Branch = require('../../branch');
 const Commit = require('../../commit');
+const Reference = require('../../reference');
 
 
 /* eslint-env node */
