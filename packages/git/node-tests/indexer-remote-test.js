@@ -8,9 +8,9 @@ const { makeRepo } = require('./support');
 const { join } = require('path');
 const { readFileSync } = require('fs');
 const {
-  Cred,
-  Remote,
+  Remote
 } = require('nodegit');
+const Cred = require('../cred');
 
 const service = require('../service');
 

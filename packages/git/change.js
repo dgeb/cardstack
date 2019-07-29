@@ -1,5 +1,4 @@
 const {
-  Merge,
   Signature,
   Tree,
   setThreadSafetyStatus,
@@ -9,6 +8,7 @@ const {
 const Repository = require('./repository');
 const Branch = require('./branch');
 const Commit = require('./commit');
+const Merge = require('./merge');
 
 const {
   MutableTree,

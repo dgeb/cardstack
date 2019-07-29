@@ -4,7 +4,7 @@ const filenamifyUrl = require('filenamify-url');
 const { existsSync } = require('fs');
 const rimraf = promisify(require('rimraf'));
 const { join } = require('path');
-const { Merge, Reset } = require('nodegit');
+const Reset = require('./reset');
 const Cred = require('./cred');
 const Clone = require('./clone');
 const Repository = require('./repository');
@@ -119,13 +119,13 @@ class GitLocalCache {
         let ref = await repo.createBranch(targetBranch, headCommit, false);
         await repo.checkoutBranch(ref, {});
         let remoteCommit = await repo.getReferenceCommit(`refs/remotes/origin/${targetBranch}`);
-        Reset.reset(repo, remoteCommit, 3, {});
+        Reset(repo, remoteCommit, 3, {});
       } else {
         throw e;
       }
     }
 
-    await repo.mergeBranches(targetBranch, `origin/${targetBranch}`, null, Merge.PREFERENCE.FASTFORWARD_ONLY);
+    await repo.mergeBranches(targetBranch, `origin/${targetBranch}`, null, 2); // 2 is the code for Merge.PREFERENCE.FASTFORWARD_ONLY
   }
 }
 
