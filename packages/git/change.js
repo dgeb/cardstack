@@ -1,13 +1,15 @@
 const {
-  Branch,
   Commit,
   Merge,
-  Repository,
   Signature,
   Tree,
   setThreadSafetyStatus,
   TreeEntry: { FILEMODE }
 } = require('nodegit');
+
+const Repository = require('./repository');
+const Branch = require('./branch');
+
 const {
   MutableTree,
   NotFound,
@@ -133,7 +135,7 @@ class Change {
 
   async _pushCommit(mergeCommit) {
     const remoteBranchName = `temp-remote-${crypto.randomBytes(20).toString('hex')}`;
-    await Branch.create(this.repo, remoteBranchName, mergeCommit, false);
+    await Branch.create(this.repo, remoteBranchName, mergeCommit, 0);
 
     let remote = await this.repo.getRemote('origin');
 
@@ -176,12 +178,12 @@ class Change {
       return await this._newBranch(commit);
     }
 
-    let headRef = await Branch.lookup(this.repo, this.targetBranch, Branch.BRANCH.LOCAL);
+    let headRef = await Branch.lookup(this.repo, this.targetBranch, 'local');
     await headRef.setTarget(commit.id(), 'fast forward');
   }
 
   async _newBranch(newCommit) {
-    await Branch.create(this.repo, this.targetBranch, newCommit, false);
+    await Branch.create(this.repo, this.targetBranch, newCommit, 0);
   }
 }
 
@@ -260,9 +262,9 @@ async function headCommit(repo, targetBranch, fetchOpts) {
   let headRef;
   try {
     if (fetchOpts) {
-      headRef = await Branch.lookup(repo, `origin/${targetBranch}`, Branch.BRANCH.REMOTE);
+      headRef = await Branch.lookup(repo, `origin/${targetBranch}`, 'remote');
     } else {
-      headRef = await Branch.lookup(repo, targetBranch, Branch.BRANCH.LOCAL);
+      headRef = await Branch.lookup(repo, targetBranch, 'local');
     }
   } catch(err) {
     if (err.errorFunction !== 'Branch.lookup') {

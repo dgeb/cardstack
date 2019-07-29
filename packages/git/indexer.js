@@ -66,10 +66,11 @@
 */
 
 const {
-  Repository,
-  Branch,
-  Commit,
+  Commit
 } = require('nodegit');
+
+const Repository = require('./repository');
+const Branch = require('./branch');
 
 const Change = require("./change");
 const { safeEntryByName } = require('./mutable-tree');
@@ -194,7 +195,7 @@ class GitUpdater {
   }
 
   async _commitAtBranch(branchName) {
-    let branch = await Branch.lookup(this.repo, branchName, Branch.BRANCH.LOCAL);
+    let branch = await Branch.lookup(this.repo, branchName);
     return Commit.lookup(this.repo, branch.target());
   }
 

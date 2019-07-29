@@ -7608,6 +7608,13 @@ diff-lines@^1.1.0:
   dependencies:
     diff "^2.2.3"
 
+diff-lines@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/diff-lines/-/diff-lines-1.1.1.tgz#4f10a709b6ce2af1d6b412ada5a90cf01d782571"
+  integrity sha512-Oo5JzEEriF/+T0usOeRP5yOzr6SWvni2rrxvIgijMZSxPcEvf8JOvCO5GpnWwkte7fcOgnue/f5ECg1H9lMPCw==
+  dependencies:
+    diff "^3.5.0"
+
 diff@3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.2.0.tgz#c9ce393a4b7cbd0b058a725c93df299027868ff9"
@@ -8628,7 +8635,7 @@ ember-cli@^3.0.0:
     babel-plugin-module-resolver "^3.2.0"
     bower-config "^1.4.1"
     bower-endpoint-parser "0.2.2"
-    broccoli "^3.1.1"
+    broccoli "^3.0.1"
     broccoli-amd-funnel "^2.0.1"
     broccoli-babel-transpiler "^7.2.0"
     broccoli-builder "^0.18.14"
@@ -8651,8 +8658,8 @@ ember-cli@^3.0.0:
     ci-info "^2.0.0"
     clean-base-url "^1.0.0"
     compression "^1.7.4"
-    configstore "^5.0.0"
-    console-ui "^3.1.0"
+    configstore "^4.0.0"
+    console-ui "^3.0.2"
     core-object "^3.1.5"
     dag-map "^2.0.2"
     diff "^4.0.1"
@@ -8668,9 +8675,9 @@ ember-cli@^3.0.0:
     exit "^0.1.2"
     express "^4.16.4"
     filesize "^4.1.2"
-    find-up "^4.0.0"
+    find-up "^3.0.0"
     find-yarn-workspace-root "^1.2.1"
-    fs-extra "^8.0.1"
+    fs-extra "^7.0.1"
     fs-tree-diff "^2.0.1"
     get-caller-file "^2.0.5"
     git-repo-info "^2.1.0"
@@ -12728,6 +12735,27 @@ isomorphic-git@^0.51.6:
     sha.js "^2.4.9"
     simple-get "^3.0.2"
 
+isomorphic-git@^0.57.1:
+  version "0.57.1"
+  resolved "https://registry.yarnpkg.com/isomorphic-git/-/isomorphic-git-0.57.1.tgz#45404158f31da84020876230619477ea3992d440"
+  integrity sha512-nxiWY27ueYOpiV8Fst6rAwYsTtKQpuPhoSNvaAwr04i6eN7svJWX2wPz/JvF69Dg8WibufwwoDA2v2i4jnEPFg==
+  dependencies:
+    async-lock "^1.1.0"
+    clean-git-ref "1.0.3"
+    crc-32 "^1.2.0"
+    diff-lines "^1.1.1"
+    git-apply-delta "0.0.7"
+    globalyzer "^0.1.0"
+    globrex "^0.1.2"
+    ignore "^5.0.4"
+    marky "^1.2.1"
+    minimisted "^2.0.0"
+    pako "^1.0.10"
+    pify "^4.0.1"
+    readable-stream "^3.1.1"
+    sha.js "^2.4.9"
+    simple-get "^3.0.2"
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
@@ -15416,6 +15444,11 @@ package-json@^4.0.1:
 packet-reader@0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/packet-reader/-/packet-reader-0.3.1.tgz#cd62e60af8d7fea8a705ec4ff990871c46871f27"
+
+pako@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
+  integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
 
 pako@^1.0.7:
   version "1.0.8"

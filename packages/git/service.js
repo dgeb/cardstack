@@ -4,7 +4,8 @@ const filenamifyUrl = require('filenamify-url');
 const { existsSync } = require('fs');
 const rimraf = promisify(require('rimraf'));
 const { join } = require('path');
-const { Clone, Cred, Merge, Repository, Reset } = require('nodegit');
+const { Clone, Cred, Merge, Reset } = require('nodegit');
+const Repository = require('./repository');
 const { tmpdir } = require('os');
 const log = require('@cardstack/logger')('cardstack/git');
 

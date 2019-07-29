@@ -1,9 +1,10 @@
 const {
-  Repository,
-  Branch,
   Reference,
   Commit
 } = require('nodegit');
+
+const Repository = require('../../repository');
+const Branch = require('../../branch');
 
 
 /* eslint-env node */
@@ -19,7 +20,7 @@ module.exports = {
   async afterInstall({ target, ui }) {
     let repo = await Repository.open(target);
     try {
-      await Branch.lookup(repo, 'cs-master', Branch.BRANCH.LOCAL);
+      await Branch.lookup(repo, 'cs-master', 'local');
       ui.writeInfoLine("Not creating branch cs-master because it exists");
       return;
     } catch (err) {
