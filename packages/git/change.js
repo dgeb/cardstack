@@ -1,5 +1,4 @@
 const {
-  Commit,
   Merge,
   Signature,
   Tree,
@@ -9,6 +8,7 @@ const {
 
 const Repository = require('./repository');
 const Branch = require('./branch');
+const Commit = require('./commit');
 
 const {
   MutableTree,
