@@ -1,14 +1,13 @@
 const {
-  Signature,
-  Tree,
-  setThreadSafetyStatus,
-  TreeEntry: { FILEMODE }
+  setThreadSafetyStatus, // maybe don't need this
 } = require('nodegit');
 
 const Repository = require('./repository');
 const Branch = require('./branch');
 const Commit = require('./commit');
 const Merge = require('./merge');
+const Signature = require('./signature');
+const Tree = require('./tree');
 
 const {
   MutableTree,
@@ -148,6 +147,8 @@ class Change {
     }
   }
 
+
+  
   async _makeMergeCommit(newCommit, commitOpts) {
     let headCommit = await this._headCommit();
 
@@ -214,7 +215,7 @@ class FileHandle {
     if (leaf) {
       this.mode = leaf.filemode();
     } else {
-      this.mode = FILEMODE.BLOB;
+      this.mode = 33188; // the enum value for TreeEntry.FILEMODE.BLOB in nodegit
     }
   }
   async getBuffer() {

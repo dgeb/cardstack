@@ -2,9 +2,13 @@
 // not-yet-written tree. But you can't recursively put a Treebuilder
 // inside a Treebuilder. That's where this class comes in.
 
-const { TreeEntry, Treebuilder, Blob } = require('nodegit');
-const { FILEMODE } = TreeEntry;
+const { Treebuilder, Blob } = require('nodegit');
 const tombstone = {};
+const FILEMODE = {
+  // enum values from nodegit
+  BLOB:  	33188,
+  TREE: 16384
+};
 
 class MutableTree {
   constructor(repo, tree) {
@@ -159,7 +163,7 @@ class NewEntry {
     return this._filemode;
   }
   isBlob() {
-    return this._filemode & FILEMODE.BLOB;
+    return this._filemode & FILEMODE.BLOB; //
   }
   isTree() {
     return this._filemode & FILEMODE.TREE;
