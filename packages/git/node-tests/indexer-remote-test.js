@@ -7,9 +7,7 @@ const {
 const { makeRepo } = require('./support');
 const { join } = require('path');
 const { readFileSync } = require('fs');
-const {
-  Remote
-} = require('nodegit');
+const Remote  = require('../remote');
 const Cred = require('../cred');
 
 const service = require('../service');

@@ -1,6 +1,4 @@
-const {
-  Remote,
-} = require('nodegit');
+const Remote = require('../remote');
 
 const Clone = require('../clone');
 const Cred = require('../cred');
