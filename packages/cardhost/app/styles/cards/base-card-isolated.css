@@ -28,3 +28,14 @@ all cards will inherit the @cardstack/base-card css.
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.card-view .isolated-card.cardstack_base-card[data-test-isolated-card="event-card"] .isolated--hero-image {
+  display: block;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
