@@ -2296,6 +2296,51 @@
     path-browserify "^1.0.0"
     url "^0.11.0"
 
+"@orbit/core@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/core/-/core-0.16.3.tgz#e172c28279cf8bd875957cb71317970aaa98aeb2"
+  integrity sha512-E4g4twgp8eg6440w3Mjc4+xP+SnyHx2UaDvxLrWx0rV579/jy7zxx98vQxW//lTuU/AXEycKZ3FVzrRDRN/3Cw==
+  dependencies:
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/data@^0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@orbit/data/-/data-0.16.4.tgz#463ea07b4e01468c140d4b51a60a3a4cbcd64268"
+  integrity sha512-vZq4hJ9fg7UADuclgBJRPkUlKcAgEkLhNbWBlzvEwOfdU0BQRPVjUp57arXIPKQy4BDxZLxRIxUjLnc/+OS4gw==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/immutable@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/immutable/-/immutable-0.16.3.tgz#b85658ccab4b05fee75772efaa84c67e5114d89b"
+  integrity sha512-8osDM0MvNxNcylNiNeWBELTG2F2kfQ3AnKgfEDp1jZmBF5KCdeRYNJZ1b+taaHJhaFQGP+Rxd+D1oPF7ubkb3w==
+
+"@orbit/memory@^0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@orbit/memory/-/memory-0.16.4.tgz#1c91dfbf83b0346c5fc3157be676d37fa4c95ae7"
+  integrity sha512-p2UR5T04vLZRzznPBDLGc7zJs02Q4gHJSH6n7y9NJ/hHijV6LC92k1s58LxUGsyjAkt6EFJlF45AKi8cdPRPlQ==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.4"
+    "@orbit/immutable" "^0.16.3"
+    "@orbit/record-cache" "^0.16.4"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/record-cache@^0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@orbit/record-cache/-/record-cache-0.16.4.tgz#6502bc956c84cbff0f4d5f5dfd87cfaf3495ed1d"
+  integrity sha512-VKJmrlZOZBobVp4McfDrQ7uwQG4ee6BeRa5mFFYxNPAgRK+z6sZZ3GHaMe2lvStU0chFTvXocHpzTH4uIjSxuQ==
+  dependencies:
+    "@orbit/core" "^0.16.3"
+    "@orbit/data" "^0.16.4"
+    "@orbit/utils" "^0.16.3"
+
+"@orbit/utils@^0.16.3":
+  version "0.16.3"
+  resolved "https://registry.yarnpkg.com/@orbit/utils/-/utils-0.16.3.tgz#fa94700191360c4c49fc9fdf464994cfe817dd0b"
+  integrity sha512-JSF9xVRUEWugGtcR9mFOCzsMLphWMh/8xAe0FOuEpyyBFxBlWLuovatg/cwvlHo7AJh3J5StiiJXmBecTk/m6A==
+
 "@resolver-engine/core@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@resolver-engine/core/-/core-0.2.1.tgz#0d71803f6d3b8cb2e9ed481a1bf0ca5f5256d0c0"
@@ -8393,9 +8438,9 @@ ember-power-calendar@^0.13.2:
     ember-cli-htmlbars "^3.0.1"
     ember-concurrency "^0.8.27 || ^0.9.0 || ^0.10.0 || ^1.0.0"
 
-"ember-power-datepicker@git+https://github.com/bagby/ember-power-datepicker.git#9eaf27d921056b47b7d620b42e303b45c7a40e67":
+"ember-power-datepicker@git+https://github.com/bagby/ember-power-datepicker#9eaf27d921056b47b7d620b42e303b45c7a40e67":
   version "0.6.0"
-  resolved "git+https://github.com/bagby/ember-power-datepicker.git#9eaf27d921056b47b7d620b42e303b45c7a40e67"
+  resolved "git+https://github.com/bagby/ember-power-datepicker#9eaf27d921056b47b7d620b42e303b45c7a40e67"
   dependencies:
     ember-basic-dropdown "^1.1.2"
     ember-cli-babel "^7.1.2"
