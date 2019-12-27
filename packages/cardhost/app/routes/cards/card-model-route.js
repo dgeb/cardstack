@@ -5,6 +5,9 @@ export default class CardModelRoute extends Route {
   @service data;
 
   async model({ id }) {
-    return await this.data.getCard(`local-hub::${id}`, 'isolated');
+    // TODO:remove return await this.data.getCard(`local-hub::${id}`, 'isolated');
+    return this.store.findRecord('card', `local-hub::${id}`, {
+      sources: { remote: { settings: { params: { format: 'isolated' } } } },
+    });
   }
 }

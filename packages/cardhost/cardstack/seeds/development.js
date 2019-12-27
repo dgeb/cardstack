@@ -14,46 +14,44 @@ let articleCard = articleFactory.getDocumentFor(
         'is-metadata': true,
         'field-type': '@cardstack/core-types::string',
       }),
-      articleFactory.addResource('fields', 'author').withAttributes({
-        'is-metadata': true,
-        'field-type': '@cardstack/core-types::belongs-to',
-        'needed-when-embedded': true,
-      }),
+      // articleFactory.addResource('fields', 'author').withAttributes({
+      //   'is-metadata': true,
+      //   'field-type': '@cardstack/core-types::belongs-to',
+      //   'needed-when-embedded': true,
+      // }),
     ])
     .withRelated(
       'model',
-      articleFactory
-        .addResource('local-hub::why-doors', 'local-hub::why-doors')
-        .withAttributes({
-          title: 'Why Doors?',
-          body: 'What is the deal with doors, and how come there are so many of them?',
-        })
-        .withRelated('author', { type: 'cards', id: 'local-hub::ringo' })
-    )
-);
-
-let userFactory = new Factory();
-let userCard = userFactory.getDocumentFor(
-  userFactory
-    .addResource('cards', 'local-hub::ringo')
-    .withRelated('fields', [
-      userFactory.addResource('fields', 'name').withAttributes({
-        'is-metadata': true,
-        'needed-when-embedded': true,
-        'field-type': '@cardstack/core-types::string',
-      }),
-      userFactory.addResource('fields', 'email').withAttributes({
-        'is-metadata': true,
-        'field-type': '@cardstack/core-types::case-insensitive',
-      }),
-    ])
-    .withRelated(
-      'model',
-      userFactory.addResource('local-hub::ringo', 'local-hub::ringo').withAttributes({
-        name: 'Ringo',
-        email: 'ringo@nowhere.dog',
+      articleFactory.addResource('local-hub::why-doors', 'local-hub::why-doors').withAttributes({
+        title: 'Why Doors?',
+        body: 'What is the deal with doors, and how come there are so many of them?',
       })
+      // .withRelated('author', { type: 'cards', id: 'local-hub::ringo' })
     )
 );
 
-module.exports = [articleCard, userCard];
+// let userFactory = new Factory();
+// let userCard = userFactory.getDocumentFor(
+//   userFactory
+//     .addResource('cards', 'local-hub::ringo')
+//     .withRelated('fields', [
+//       userFactory.addResource('fields', 'name').withAttributes({
+//         'is-metadata': true,
+//         'needed-when-embedded': true,
+//         'field-type': '@cardstack/core-types::string',
+//       }),
+//       userFactory.addResource('fields', 'email').withAttributes({
+//         'is-metadata': true,
+//         'field-type': '@cardstack/core-types::case-insensitive',
+//       }),
+//     ])
+//     .withRelated(
+//       'model',
+//       userFactory.addResource('local-hub::ringo', 'local-hub::ringo').withAttributes({
+//         name: 'Ringo',
+//         email: 'ringo@nowhere.dog',
+//       })
+//     )
+// );
+
+module.exports = [articleCard]; //, userCard];
